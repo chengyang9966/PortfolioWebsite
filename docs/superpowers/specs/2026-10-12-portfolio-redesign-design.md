@@ -5,11 +5,13 @@
 
 ## Stack
 
-- Static: `index.html`, `css/style.css`, `js/main.js`. No frameworks, no build step.
-- Fonts via Google Fonts: Instrument Serif (display), Geist (body), Geist Mono (dates, tags, labels).
-- Remove all template baggage: Bootstrap, jQuery, Owl Carousel, Isotope, Magnific Popup, Font Awesome kit, bundled Roboto/FA font files, and every image under `img/` (still in git history).
-- Icons: a handful of inline SVGs (GitHub, LinkedIn, arrow, external link).
-- Deploy target: GitHub Pages from `master` (not currently enabled; enabling it is a separate, user-confirmed step).
+- Next.js (App Router) + TypeScript, `output: "export"` (fully static). The repo itself doubles as a showcase of the stack he uses daily.
+- Tailwind CSS v4 for styling; `motion` (Framer Motion) for animation.
+- Fonts via `next/font/google`: Instrument Serif (display), Geist (body), Geist Mono (dates, tags, labels).
+- All CV content lives in typed data files under `src/content/`; components only render it.
+- Icons: a handful of inline SVG components (GitHub, LinkedIn, arrow, external link).
+- Remove the entire 2019 template (Bootstrap, jQuery, Owl, Isotope, Magnific, Font Awesome, bundled fonts, `img/`, `vendor/`, `icons/`) — still in git history.
+- Deploy: Vercel (git-connected, auto-deploys on push to `master`). Connecting the repo is a user-confirmed step.
 
 ## Visual direction: editorial dark
 
@@ -43,17 +45,17 @@
 - Scroll reveal (fade + 16px rise, staggered) via IntersectionObserver.
 - Project visuals: subtle pointer-follow tilt/parallax on hover (desktop only).
 - Hero: staggered line-in on load.
-- All motion disabled under `prefers-reduced-motion: reduce`. Page fully usable without JS (content visible by default; JS adds the `.js` class that enables reveal states).
+- All motion disabled under `prefers-reduced-motion: reduce`. Content is server-rendered into the static HTML, so it is readable before hydration.
 
 ## Analytics
 
-- GoatCounter (cookie-free, no consent banner). Script tag included with a clearly marked `data-goatcounter` placeholder URL; user creates the account and fills in their code.
+- Vercel Web Analytics (`@vercel/analytics`, cookie-free, free tier). Enabled in the Vercel dashboard after first deploy.
 
 ## Assets
 
-- `img/work/mantiq.webp`, `img/work/hotelx.webp` — captured with headless Chrome at 1440×900.
-- `img/work/signsbeat-1..3.png` — downloaded from the App Store listing.
-- `img/og.png` — social share image (1200×630) captured from the hero.
+- `public/work/mantiq.webp`, `public/work/hotelx.webp` — captured with headless Chrome at 1440×900.
+- `public/work/signsbeat-1..3.png` — downloaded from the App Store listing.
+- `public/og.png` — social share image (1200×630) captured from the hero.
 - Meta: title, description, Open Graph/Twitter tags, favicon (SVG monogram).
 
 ## Out of scope
