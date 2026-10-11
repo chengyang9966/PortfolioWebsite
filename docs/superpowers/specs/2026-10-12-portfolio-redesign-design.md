@@ -5,9 +5,9 @@
 
 ## Stack
 
-- Next.js (App Router) + TypeScript, `output: "export"` (fully static). The repo itself doubles as a showcase of the stack he uses daily.
+- Next.js (App Router) + TypeScript; the page is statically prerendered (no `output: "export"`, since Vercel serves Next natively). The repo itself doubles as a showcase of the stack he uses daily.
 - Tailwind CSS v4 for styling; `motion` (Framer Motion) for animation.
-- Fonts via `next/font/google`: Instrument Serif (display), Geist (body), Geist Mono (dates, tags, labels).
+- Fonts via `next/font/google` (see Visual direction).
 - All CV content lives in typed data files under `src/content/`; components only render it.
 - Icons: a handful of inline SVG components (GitHub, LinkedIn, arrow, external link).
 - Remove the entire 2019 template (Bootstrap, jQuery, Owl, Isotope, Magnific, Font Awesome, bundled fonts, `img/`, `vendor/`, `icons/`) — still in git history.
@@ -15,20 +15,23 @@
 
 ## Visual direction: editorial dark
 
-- Background near-black (`#0c0c0b`), text warm off-white, muted grey for secondary text, one amber accent.
-- Large serif display type for name and section headings; mono for metadata.
-- Thin hairline rules separate sections and rows; numbered section labels (`01 — Work`).
-- Responsive from 360px up; single column on mobile.
+Revised during implementation after a check against generic defaults (eyebrow labels, mono metadata, near-black + single accent, numbered sections):
+
+- Palette: harbour `#0f1d21` (base), raised `#152a30`, line `#24393f`, paper `#ece6d9` (text), fog `#93a3a3` (secondary), sodium `#f5a524` (links, live dot, focus only).
+- Type: Newsreader (display, optical sizes) + Schibsted Grotesk (body/UI). No monospace; tabular numerals for dates.
+- The one bold element: the name set edge-to-edge in the hero (two lines on mobile), with a single load animation.
+- No eyebrow labels or numbering on sections; projects are named, not numbered. Years only appear where content is a timeline.
+- Responsive from 360px up.
 
 ## Sections
 
-1. **Nav (sticky):** `CY` monogram · Work · Experience · About · Contact. Active section highlighted via IntersectionObserver.
+1. **Nav (fixed):** name (appears after the hero) and Work / Experience / About / Contact. Active section highlighted via IntersectionObserver.
 2. **Hero:** name, pitch ("Full-stack engineer & team lead building AI products"), "Currently Team Lead at Giv AI Labs" status line with a pulsing dot, location (Kuala Lumpur), links: Email, CV (Google Drive PDF), GitHub, LinkedIn. A "years shipping" counter (since 2020).
-3. **Selected Work** — numbered case-study rows; each has: title, one-line summary, role, 2–4 "what I did" bullets, stack tags, visual, external link.
-   - **01 Mantiq Launch** (Giv AI Labs, 2025–now) — flagship, full width. Idea → validated → branded → live business; 21 AI tools across Validate / Brand / Build / Run; one shared brief powers every tool. Role: Team Lead. Bullets: lead the team building the product; AI tools for businesses and teachers; migrated auth to Cognito and services to ECS. Visual: screenshot of mantiq-launch.com. Link: https://mantiq-launch.com/
-   - **02 Signsbeat** (Vitalz, 2024) — AI wellness companion syncing wearables over Bluetooth; longevity index, lifestyle journaling. Role: Senior Full Stack. Built web + mobile from scratch, BLE device connection, AI insights. Visual: fanned phone screenshots from the App Store listing. Link: App Store.
-   - **03 HotelX** (IFCA, 2020–2021) — cloud hotel management system trusted by 1,000+ properties. Built features in React/TypeScript/Node/GraphQL; integrated Revenue Monster payments, WhatsApp, Telegram and NodeMailer. Visual: screenshot of ifca.asia/hotelx. Link: https://ifca.asia/hotelx/
-   - **04 Loan & Cashier Systems** (Arkmind / FirebiredIt) — compact two-up: Loan application system and cashier admin system; React, Redux Toolkit, Node, Express, Prisma. No visual (typographic card).
+3. **Selected Work** — case-study rows; each has: title, one-line summary, role, 2–4 "what I did" bullets, stack tags, visual, external link.
+   - **Mantiq Launch** (Giv AI Labs, 2025–now) — flagship, full width. Idea → validated → branded → live business; 21 AI tools across Validate / Brand / Build / Run; one shared brief powers every tool. Role: Team Lead. Bullets: lead the team building the product; AI tools for businesses and teachers; migrated auth to Cognito and services to ECS. Visual: screenshot of mantiq-launch.com. Link: https://mantiq-launch.com/
+   - **Signsbeat** (Vitalz, 2024) — AI wellness companion syncing wearables over Bluetooth; longevity index, lifestyle journaling. Role: Senior Full Stack. Built web + mobile from scratch, BLE device connection, AI insights. Visual: fanned phone screenshots from the App Store listing. Link: App Store.
+   - **HotelX** (IFCA, 2020–2021) — cloud hotel management system trusted by 1,000+ properties. Built features in React/TypeScript/Node/GraphQL; integrated Revenue Monster payments, WhatsApp, Telegram and NodeMailer. Visual: screenshot of ifca.asia/hotelx. Link: https://ifca.asia/hotelx/
+   - **Also built: Loan & Cashier Systems** (Arkmind / FirebiredIt) — compact two-up: Loan application system and cashier admin system; React, Redux Toolkit, Node, Express, Prisma. No visual (typographic card).
 4. **Experience** — timeline rows `dates | role | company | one line`:
    - Aug 2025 – Now · Team Lead · Giv AI Labs Sdn Bhd
    - Oct 2024 – Jul 2025 · Freelance Full Stack Developer · Arkmind
@@ -42,10 +45,9 @@
 
 ## Motion
 
-- Scroll reveal (fade + 16px rise, staggered) via IntersectionObserver.
-- Project visuals: subtle pointer-follow tilt/parallax on hover (desktop only).
-- Hero: staggered line-in on load.
-- All motion disabled under `prefers-reduced-motion: reduce`. Content is server-rendered into the static HTML, so it is readable before hydration.
+- One orchestrated moment: the name rises word-by-word on load, then the status line and intro fade in.
+- Nav active-section underline slides between links (motion `layoutId`).
+- No per-section scroll reveals or card tilts. All motion disabled under `prefers-reduced-motion: reduce`.
 
 ## Analytics
 
@@ -53,9 +55,9 @@
 
 ## Assets
 
-- `public/work/mantiq.webp`, `public/work/hotelx.webp` — captured with headless Chrome at 1440×900.
-- `public/work/signsbeat-1..3.png` — downloaded from the App Store listing.
-- `public/og.png` — social share image (1200×630) captured from the hero.
+- `src/assets/work/mantiq*.webp`, `hotelx*.webp` — captured with headless Chrome at 1440×900 @2x.
+- `src/assets/work/signsbeat-1..3.webp` — from the App Store listing.
+- `src/app/opengraph-image.png` — social share image (1200×630) captured from the hero.
 - Meta: title, description, Open Graph/Twitter tags, favicon (SVG monogram).
 
 ## Out of scope
