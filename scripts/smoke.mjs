@@ -1,7 +1,8 @@
 // Post-build content check: the prerendered home page must contain the real CV content.
 import { readFileSync } from "node:fs";
 
-const html = readFileSync(new URL("../.next/server/app/index.html", import.meta.url), "utf8");
+const read = (path) => readFileSync(new URL(`../.next/server/app/${path}`, import.meta.url), "utf8");
+const html = read("index.html");
 
 const mustContain = [
   "Ong",
@@ -21,7 +22,16 @@ const mustContain = [
 ];
 const mustNotContain = ["Lorem", "Create Next App"];
 
+const caseStudies = { "mantiq-launch": "Mantiq Launch", signsbeat: "Signsbeat", hotelx: "HotelX" };
+
 const failures = [
+  ...Object.entries(caseStudies).flatMap(([slug, title]) => {
+    try {
+      return read(`work/${slug}.html`).includes(title) ? [] : [`case study /work/${slug} missing title`];
+    } catch {
+      return [`case study /work/${slug} not prerendered`];
+    }
+  }),
   ...mustContain.filter((text) => !html.includes(text)).map((text) => `missing: ${text}`),
   ...mustNotContain.filter((text) => html.includes(text)).map((text) => `unexpected: ${text}`),
 ];
@@ -30,4 +40,4 @@ if (failures.length) {
   console.error(`smoke: ${failures.length} check(s) failed\n  ${failures.join("\n  ")}`);
   process.exit(1);
 }
-console.log(`smoke: all ${mustContain.length + mustNotContain.length} checks passed`);
+console.log(`smoke: all ${mustContain.length + mustNotContain.length + Object.keys(caseStudies).length} checks passed`);

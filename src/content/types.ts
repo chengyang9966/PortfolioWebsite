@@ -4,19 +4,29 @@ export type Link = { label: string; href: string };
 
 export type Shot = { src: StaticImageData; alt: string };
 
-export type Visual = { kind: "browser"; url: string; main: Shot; extra?: Shot[] } | { kind: "phones"; shots: Shot[] };
+export type Media =
+  | { kind: "video"; webm: string; mp4: string; poster: StaticImageData; alt: string }
+  | { kind: "phones"; shots: Shot[] };
+
+export type CaseSection = { heading: string; body: string };
 
 export type Project = {
   slug: string;
   title: string;
   org: string;
   period: string;
+  year: string;
   summary: string;
   role: string;
   points: string[];
   stack: string[];
-  visual: Visual;
+  media: Media;
   link: Link;
+  caseStudy: {
+    overview: string;
+    sections: CaseSection[];
+    gallery: Shot[];
+  };
 };
 
 export type SmallProject = {

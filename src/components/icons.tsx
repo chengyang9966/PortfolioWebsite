@@ -1,5 +1,13 @@
 type IconProps = { className?: string };
 
+export function ArrowLeft({ className = "size-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden className={className}>
+      <path d="M13 8H3m4-4L3 8l4 4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function ArrowUpRight({ className = "size-4" }: IconProps) {
   return (
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden className={className}>

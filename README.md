@@ -1,6 +1,6 @@
 # Ong Cheng Yang — Portfolio
 
-Personal portfolio: selected work, experience and contact. Next.js 16 (App Router), TypeScript, Tailwind CSS 4, statically prerendered.
+Personal portfolio: selected work, case studies, experience and contact. Next.js 16 (App Router), TypeScript, Tailwind CSS 4, GSAP + Lenis for motion, React `<ViewTransition>` for page transitions. Fully prerendered.
 
 ## Develop
 
@@ -19,7 +19,13 @@ All CV content lives in typed data files. Components only render it.
 | Case studies + "Also built" | `src/content/projects.ts` |
 | Experience timeline | `src/content/experience.ts` |
 | About, tools, education | `src/content/about.ts` |
+| Case-study text | `caseStudy` field in `src/content/projects.ts` |
 | Project screenshots | `src/assets/work/` (static imports, WebP) |
+| Preview videos | `public/work/*.webm` + `*.mp4` (silent loops of public sites) |
+
+## Motion
+
+Primitives live in `src/components/motion/` (smooth scroll, split-text reveal, fade-in, magnetic, cursor, marquee). Everything respects `prefers-reduced-motion`: no preloader, no smooth scroll, no custom cursor, content shown in its final state.
 
 ## Check before pushing
 

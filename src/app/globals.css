@@ -18,7 +18,6 @@
   html {
     background: var(--color-harbour);
     color: var(--color-paper);
-    scroll-behavior: smooth;
     scroll-padding-top: 5rem;
     -webkit-text-size-adjust: 100%;
   }
@@ -42,9 +41,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
     *,
     *::before,
     *::after {
@@ -55,34 +51,159 @@
   }
 }
 
-/* The one orchestrated moment: the name rises out of its baseline on load. */
-@keyframes rise {
-  from {
-    transform: translateY(105%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes settle {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@utility rise {
-  display: inline-block;
-  animation: rise 1.1s var(--ease-out-quint) both;
-}
-
-@utility settle {
-  animation: settle 0.9s ease-out both;
-}
-
 @utility tnum {
   font-variant-numeric: tabular-nums;
+}
+
+/* ---------- First load ---------- */
+
+/* Set by the inline head script; the preloader removes it. */
+html.is-loading {
+  overflow: hidden;
+}
+
+/* Hero elements wait for their intro. If JS never runs, they appear after 3.5s anyway. */
+html.js [data-intro] {
+  visibility: hidden;
+  animation: reveal-fallback 0s 3.5s forwards;
+}
+
+.preloader {
+  animation: hide-fallback 0s 6s forwards;
+}
+
+html.seen .preloader,
+html:not(.js) .preloader {
+  display: none;
+}
+
+@keyframes reveal-fallback {
+  to {
+    visibility: visible;
+  }
+}
+
+@keyframes hide-fallback {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-intro] {
+    visibility: visible;
+    animation: none;
+  }
+}
+
+/* ---------- Custom cursor ---------- */
+
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+
+/* ---------- Film grain ---------- */
+
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1s steps(4) infinite;
+}
+
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-4%, 3%);
+  }
+  50% {
+    transform: translate(3%, -5%);
+  }
+  75% {
+    transform: translate(-2%, 6%);
+  }
+}
+
+/* ---------- Work preview stack ---------- */
+
+/* The incoming layer wipes up over the outgoing one; the outgoing layer hides only once covered. */
+.work-layer {
+  z-index: 1;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.9s var(--ease-out-quint) 0.9s;
+}
+
+.work-layer[data-active="true"] {
+  z-index: 2;
+  clip-path: inset(0 0 0 0);
+  transition-delay: 0s;
+}
+
+.work-layer-inner {
+  transform: scale(1.12);
+  transition: transform 1.4s var(--ease-out-quint) 0.9s;
+}
+
+.work-layer[data-active="true"] .work-layer-inner {
+  transform: scale(1);
+  transition-delay: 0s;
+}
+
+/* ---------- Page transitions (React <ViewTransition>) ---------- */
+
+::view-transition-group(.morph) {
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(.page-forward) {
+  animation: 420ms cubic-bezier(0.7, 0, 0.84, 0) both page-out-up;
+}
+::view-transition-new(.page-forward) {
+  animation: 800ms cubic-bezier(0.16, 1, 0.3, 1) 220ms both page-in-up;
+}
+::view-transition-old(.page-back) {
+  animation: 420ms cubic-bezier(0.7, 0, 0.84, 0) both page-out-down;
+}
+::view-transition-new(.page-back) {
+  animation: 800ms cubic-bezier(0.16, 1, 0.3, 1) 220ms both page-in-down;
+}
+
+@keyframes page-out-up {
+  to {
+    opacity: 0;
+    transform: translateY(-48px);
+  }
+}
+@keyframes page-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(72px);
+  }
+}
+@keyframes page-out-down {
+  to {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+}
+@keyframes page-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-72px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
