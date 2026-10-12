@@ -11,21 +11,34 @@ type Props = {
 /** A project's preview: a silent video loop, a fan of phone screens, or an animated diagram. Fills its parent. */
 export function ProjectMedia({ media, autoPlay = false, videoRef }: Props) {
   if (media.kind === "video") {
+    // The poster sits behind the video as a real image, so the frame is never blank while the
+    // video loads, or if a browser can't play it.
     return (
-      <video
-        ref={videoRef}
-        className="size-full object-cover object-top"
-        muted
-        loop
-        playsInline
-        autoPlay={autoPlay}
-        preload={autoPlay ? "auto" : "metadata"}
-        poster={media.poster.src}
-        aria-label={media.alt}
-      >
-        <source src={media.webm} type="video/webm" />
-        <source src={media.mp4} type="video/mp4" />
-      </video>
+      <div className="relative size-full">
+        <Image
+          src={media.poster}
+          alt=""
+          aria-hidden
+          fill
+          sizes="(min-width: 1024px) 60vw, 100vw"
+          className="object-cover object-top"
+        />
+        <video
+          ref={videoRef}
+          className="relative size-full object-cover object-top"
+          muted
+          loop
+          playsInline
+          autoPlay={autoPlay}
+          preload={autoPlay ? "auto" : "metadata"}
+          poster={media.poster.src}
+          aria-label={media.alt}
+        >
+          {/* H.264 first: Safari advertises WebM support but fails to decode these VP9 files. */}
+          <source src={media.mp4} type="video/mp4" />
+          <source src={media.webm} type="video/webm" />
+        </video>
+      </div>
     );
   }
 
