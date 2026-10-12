@@ -35,6 +35,10 @@ pnpm typecheck && pnpm lint && pnpm build && pnpm smoke
 
 `pnpm smoke` asserts the prerendered page contains the real CV content (and no template leftovers).
 
-## Deploy
+## Branches and deploys
 
-Hosted on Vercel: import the GitHub repo once and every push to `master` deploys. Visitor stats come from Vercel Web Analytics (`<Analytics />` in `src/app/layout.tsx`); enable it under the project's **Analytics** tab.
+- **`main`**: the live site. Vercel deploys every push to `main` to production.
+- **Changes**: work on a branch, open a pull request into `main`, check the Vercel preview link on the PR, then merge.
+- **`legacy`** (and tag `v1-legacy`): the original 2019 Bootstrap site, kept frozen for reference.
+
+Visitor stats come from Vercel Web Analytics (`<Analytics />` in `src/app/layout.tsx`); enable it under the project's **Analytics** tab.
