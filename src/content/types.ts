@@ -6,7 +6,8 @@ export type Shot = { src: StaticImageData; alt: string };
 
 export type Media =
   | { kind: "video"; webm: string; mp4: string; poster: StaticImageData; alt: string }
-  | { kind: "phones"; shots: Shot[] };
+  | { kind: "phones"; shots: Shot[] }
+  | { kind: "diagram" };
 
 export type CaseSection = { heading: string; body: string };
 
@@ -32,9 +33,10 @@ export type Project = {
 export type SmallProject = {
   title: string;
   org: string;
-  period: string;
+  period?: string;
   summary: string;
   stack: string[];
+  metric?: { value: string; label: string };
 };
 
 export type Role = {

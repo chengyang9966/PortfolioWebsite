@@ -9,6 +9,13 @@ export const experience: Role[] = [
     line: "Leading the team building Mantiq Launch and AI tools for businesses and teachers.",
   },
   {
+    start: "2024",
+    end: "Now",
+    title: "Founder",
+    company: "TechDevX",
+    line: "My studio: client portals and apps, plus our own products, LeadFlow and TechDevX Identity.",
+  },
+  {
     start: "Oct 2024",
     end: "Jul 2025",
     title: "Freelance full-stack developer",

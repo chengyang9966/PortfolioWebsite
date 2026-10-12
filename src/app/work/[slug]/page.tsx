@@ -11,6 +11,7 @@ import { SplitReveal } from "@/components/motion/split-reveal";
 import { PageTransition } from "@/components/page-transition";
 import { ProjectMedia } from "@/components/project-media";
 import { RollText } from "@/components/roll-text";
+import { identitySteps } from "@/content/identity";
 import { profile } from "@/content/profile";
 import { getProject, projects } from "@/content/projects";
 
@@ -94,6 +95,24 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
               {project.caseStudy.overview}
             </SplitReveal>
           </section>
+
+          {project.media.kind === "diagram" && (
+            <section className="mx-auto mt-24 grid max-w-[90rem] gap-6 md:mt-32 md:grid-cols-12">
+              <h2 className="text-fog md:col-span-3">How a sign-in works</h2>
+              <FadeIn as="ol" stagger={0.07} className="md:col-span-9">
+                {identitySteps.map((step, i) => (
+                  <li
+                    key={step.text}
+                    data-reveal
+                    className="grid grid-cols-[3rem_1fr] border-t border-line py-5 text-lg text-paper/90 last:border-b md:text-xl"
+                  >
+                    <span className="text-sm text-sodium tnum">{pad(i + 1)}</span>
+                    {step.text}
+                  </li>
+                ))}
+              </FadeIn>
+            </section>
+          )}
 
           <section className="mx-auto mt-24 grid max-w-[90rem] gap-6 md:mt-32 md:grid-cols-12">
             <h2 className="text-fog md:col-span-3">What I did</h2>

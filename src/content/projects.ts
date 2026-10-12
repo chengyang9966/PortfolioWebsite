@@ -11,6 +11,8 @@ import signsbeat4 from "@/assets/work/signsbeat-4.webp";
 import hotelx from "@/assets/work/hotelx.webp";
 import hotelxPoster from "@/assets/work/hotelx-poster.webp";
 import hotelxTypes from "@/assets/work/hotelx-types.webp";
+import identityLogin from "@/assets/work/identity-login.webp";
+import identityRegister from "@/assets/work/identity-register.webp";
 
 const signsbeatShots = {
   trend: { src: signsbeat2, alt: "Signsbeat weekly recovery trend chart." },
@@ -65,6 +67,65 @@ export const projects: Project[] = [
         { src: mantiq, alt: "Mantiq Launch home page: Every tool it takes to launch a business, in one place." },
         { src: mantiqTools, alt: "Mantiq Launch toolkit: 21 tools grouped into Validate, Brand, Build and Run." },
         { src: mantiqDay, alt: "Mantiq Launch walks a founder through a single launch day, starting at 9:00 am." },
+      ],
+    },
+  },
+  {
+    slug: "techdevx-identity",
+    title: "TechDevX Identity",
+    org: "TechDevX",
+    period: "2026",
+    year: "2026",
+    summary:
+      "The single sign-in service behind TechDevX’s apps: a standards-based OpenID Connect provider with branded logins for many organisations on one install.",
+    role: "Founder and engineer",
+    points: [
+      "Designed and built the identity provider end to end, from spec to production",
+      "Implemented OpenID Connect with PKCE, RS256-signed tokens and a public JWKS",
+      "Built organisations, per-app branding and an admin console for apps, users and billing",
+      "Turned Stripe plans into token entitlements and signed webhooks for client apps",
+      "Hardened production: audit log, rate limits, locked-down containers, secret scanning",
+    ],
+    stack: [
+      "TypeScript",
+      "Next.js",
+      "Hono",
+      "Better Auth",
+      "OpenID Connect",
+      "PostgreSQL",
+      "Prisma",
+      "Stripe",
+      "Docker",
+    ],
+    media: { kind: "diagram" },
+    link: { label: "Visit auth.techdevx.com", href: "https://auth.techdevx.com/login" },
+    caseStudy: {
+      overview:
+        "Every TechDevX app needs accounts, so instead of rebuilding sign-in each time I built one identity service they all share. TaxHacker on the web and the Vault Finance mobile app send users to it and get back signed tokens. One install serves many organisations, each with its own subdomain, branding and users, and it’s also where each user’s paid plan lives.",
+      sections: [
+        {
+          heading: "Standards, not a homemade token",
+          body: "It’s a real OpenID Connect provider, built on Better Auth and the panva OIDC library rather than custom crypto. Apps use the authorization-code flow with PKCE, ID tokens are signed RS256 and verified against a public JWKS, and mobile apps can use bearer tokens with native Apple and Google sign-in.",
+        },
+        {
+          heading: "Every way people expect to sign in",
+          body: "Email and password with required verification, magic links that also hand off to native apps, password reset, and Google, GitHub and Apple, with account linking only between verified emails. Apps the platform doesn’t trust get a consent screen; anything short of an explicit allow is a deny.",
+        },
+        {
+          heading: "Many organisations, one install",
+          body: "Each organisation is resolved from its subdomain and gets its own branding and user base. Every database query is scoped to the organisation, and an isolation test suite checks that one tenant can never read another’s data. Admins manage apps, users and billing from one console.",
+        },
+        {
+          heading: "Secure by default",
+          body: "Sign-in and reset endpoints are rate limited, every auth event goes to an append-only audit log, and responses never reveal whether an email exists. In production the containers drop all privileges, the web container is read-only with no internet access, and around 400 automated tests cover the flows, including Playwright runs of the full OIDC login.",
+        },
+      ],
+      gallery: [
+        {
+          src: identityLogin,
+          alt: "TechDevX Identity sign-in page with email, magic link, Google, GitHub and Apple options.",
+        },
+        { src: identityRegister, alt: "TechDevX Identity account creation page: one account for every app." },
       ],
     },
   },
@@ -155,6 +216,22 @@ export function getProject(slug: string) {
 }
 
 export const smallProjects: SmallProject[] = [
+  {
+    title: "Agent commission and settlement system",
+    org: "TechDevX client, confidential",
+    summary:
+      "A self-serve portal where 300+ agents see real-time commission earnings and request payouts, with a finance review queue and an audit trail, replacing weekly Excel reconciliations.",
+    stack: ["Next.js", "PostgreSQL", "Stripe"],
+    metric: { value: "−85%", label: "reconciliation time" },
+  },
+  {
+    title: "Headless marketing site and lead routing",
+    org: "TechDevX client, confidential",
+    summary:
+      "A fast, editor-friendly site on Next.js and Payload that the marketing team runs without developers, with inbound forms scored and routed to Slack.",
+    stack: ["Next.js", "Payload CMS", "Vercel"],
+    metric: { value: "3.2×", label: "inbound leads a month" },
+  },
   {
     title: "Loan application system",
     org: "Arkmind",

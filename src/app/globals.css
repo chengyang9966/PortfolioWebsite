@@ -207,3 +207,26 @@ html.has-cursor * {
     animation: none !important;
   }
 }
+
+/* ---------- Identity diagram ---------- */
+
+.diagram-flow {
+  animation: diagram-flow 0.9s linear infinite;
+}
+
+@keyframes diagram-flow {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+.diagram-caption {
+  animation: diagram-caption 0.6s var(--ease-out-quint) both;
+}
+
+@keyframes diagram-caption {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

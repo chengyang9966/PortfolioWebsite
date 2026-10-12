@@ -104,7 +104,7 @@ export function Hero() {
               >
                 Mantiq Launch
               </a>
-              , an AI toolkit that takes a business from idea to launch.
+              , an AI toolkit that takes a business from idea to launch, and run my own studio, TechDevX.
             </p>
             <ul
               data-intro-fade

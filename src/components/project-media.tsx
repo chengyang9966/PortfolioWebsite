@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Media, Shot } from "@/content/types";
+import { IdentityDiagram } from "./identity-diagram";
 
 type Props = {
   media: Media;
@@ -7,7 +8,7 @@ type Props = {
   videoRef?: React.Ref<HTMLVideoElement>;
 };
 
-/** A project's preview: a silent looping video of its public site, or a fan of phone screens. Fills its parent. */
+/** A project's preview: a silent video loop, a fan of phone screens, or an animated diagram. Fills its parent. */
 export function ProjectMedia({ media, autoPlay = false, videoRef }: Props) {
   if (media.kind === "video") {
     return (
@@ -27,6 +28,8 @@ export function ProjectMedia({ media, autoPlay = false, videoRef }: Props) {
       </video>
     );
   }
+
+  if (media.kind === "diagram") return <IdentityDiagram />;
 
   const [left, middle, right] = media.shots;
   return (

@@ -7,7 +7,7 @@ export function Experience() {
     <section id="experience" aria-labelledby="experience-title" className="px-5 py-24 sm:px-10 md:py-32">
       <div className="mx-auto max-w-[90rem]">
         <SectionHeading id="experience" title="Experience">
-          Six roles since 2020, across hospitality, telco, health tech and AI.
+          Seven roles since 2020, across hospitality, telco, health tech, AI and my own studio.
         </SectionHeading>
 
         <FadeIn as="ol" stagger={0.07} className="mt-12 md:mt-16">

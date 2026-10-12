@@ -16,13 +16,19 @@ const mustContain = [
   "Syntrino Solution",
   "IFCA",
   "FirebiredIt",
+  "TechDevX",
   "chengyang9966@gmail.com",
   "linkedin.com/in/chengyangong",
   "github.com/chengyang9966",
 ];
 const mustNotContain = ["Lorem", "Create Next App"];
 
-const caseStudies = { "mantiq-launch": "Mantiq Launch", signsbeat: "Signsbeat", hotelx: "HotelX" };
+const caseStudies = {
+  "mantiq-launch": "Mantiq Launch",
+  "techdevx-identity": "TechDevX Identity",
+  signsbeat: "Signsbeat",
+  hotelx: "HotelX",
+};
 
 const failures = [
   ...Object.entries(caseStudies).flatMap(([slug, title]) => {

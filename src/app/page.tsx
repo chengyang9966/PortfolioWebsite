@@ -31,7 +31,8 @@ export default function Home() {
         <section id="work" aria-labelledby="work-title" className="px-5 py-24 sm:px-10 md:py-32">
           <div className="mx-auto max-w-[90rem]">
             <SectionHeading id="work" title="Selected work">
-              Products I’ve helped build and ship, from hotel operations to wearable health and AI.
+              Products I’ve built and shipped, from hotel operations and wearable health to AI and my own studio’s
+              platform.
             </SectionHeading>
             <div className="mt-12 md:mt-8">
               <WorkShowcase />
@@ -41,12 +42,25 @@ export default function Home() {
               <h3 data-reveal className="font-serif text-3xl font-[380] tracking-[-0.02em]">
                 Also built
               </h3>
-              <div className="mt-8 grid gap-10 md:grid-cols-2">
+              <div className="mt-8 grid gap-x-10 gap-y-14 md:grid-cols-2">
                 {smallProjects.map((project) => (
                   <div key={project.title} data-reveal className="max-w-[34rem]">
+                    {project.metric && (
+                      <p className="mb-4 flex items-baseline gap-3 border-b border-line pb-4">
+                        <span className="font-serif text-[clamp(2.75rem,5vw,4rem)] leading-none font-[340] tracking-[-0.03em] text-sodium">
+                          {project.metric.value}
+                        </span>
+                        <span className="text-fog">{project.metric.label}</span>
+                      </p>
+                    )}
                     <h4 className="text-lg font-medium text-paper">{project.title}</h4>
                     <p className="text-fog">
-                      {project.org}, <span className="tnum">{project.period}</span>
+                      {project.org}
+                      {project.period && (
+                        <>
+                          , <span className="tnum">{project.period}</span>
+                        </>
+                      )}
                     </p>
                     <p className="mt-3 text-paper/85">{project.summary}</p>
                     <p className="mt-3 text-[0.9375rem] text-fog">Built with {list.format(project.stack)}.</p>
