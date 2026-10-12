@@ -32,7 +32,11 @@ const caseStudies = {
   hotelx: "HotelX",
 };
 
+const cvHtml = read("cv.html");
+const cvChecks = ["Ong Cheng Yang", "Giv AI Labs", "TechDevX", "CelcomDigi", "IFCA"].filter((text) => !cvHtml.includes(text));
+
 const failures = [
+  ...cvChecks.map((text) => `cv missing: ${text}`),
   ...Object.entries(caseStudies).flatMap(([slug, title]) => {
     try {
       return read(`work/${slug}.html`).includes(title) ? [] : [`case study /work/${slug} missing title`];

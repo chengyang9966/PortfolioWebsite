@@ -1,10 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Newsreader, Schibsted_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { Header } from "@/components/header";
-import { Cursor } from "@/components/motion/cursor";
-import { SmoothScroll } from "@/components/motion/smooth-scroll";
-import { Preloader } from "@/components/preloader";
 import { profile } from "@/content/profile";
 import "lenis/dist/lenis.css";
 import "./globals.css";
@@ -25,6 +21,7 @@ const description =
   "Full-stack engineer and team lead in Kuala Lumpur. Building AI products at Giv AI Labs; previously Vitalz, CelcomDigi and IFCA.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(profile.site),
   title: `${profile.name} — ${profile.role}`,
   description,
   openGraph: {
@@ -39,8 +36,8 @@ export const viewport: Viewport = {
   themeColor: "#1a1420",
 };
 
-// Runs before first paint: flags JS, and decides whether this visit gets the preloader.
-const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');var seen=false;try{seen=!!sessionStorage.getItem('cy-seen')}catch(e){}if(seen||matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('seen')}else{d.classList.add('is-loading');setTimeout(function(){d.classList.remove('is-loading')},6000)}})()`;
+// Runs before first paint: flags JS, and decides whether this visit gets the preloader (never on /cv).
+const bootScript = `(function(){if(location.pathname.indexOf('/cv')===0)return;var d=document.documentElement;d.classList.add('js');var seen=false;try{seen=!!sessionStorage.getItem('cy-seen')}catch(e){}if(seen||matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('seen')}else{d.classList.add('is-loading');setTimeout(function(){d.classList.remove('is-loading')},6000)}})()`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -49,13 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
       <body>
-        <SmoothScroll>
-          <Preloader />
-          <Header />
-          {children}
-        </SmoothScroll>
-        <Cursor />
-        <div aria-hidden className="grain" />
+        {children}
         <Analytics />
       </body>
     </html>

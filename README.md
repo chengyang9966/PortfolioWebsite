@@ -23,6 +23,17 @@ All CV content lives in typed data files. Components only render it.
 | Project screenshots | `src/assets/work/` (static imports, WebP) |
 | Preview videos | `public/work/*.webm` + `*.mp4` (silent loops of public sites) |
 
+## CV
+
+`/cv` renders the CV from `src/content/cv.ts` (plus `profile.ts`). After `pnpm build`:
+
+```bash
+pnpm cv                                # public/ong-cheng-yang-cv.pdf, linked from the site (no phone)
+CV_PHONE="+60 ..." pnpm cv             # also cv-private/ong-cheng-yang-cv.pdf for emailing (git-ignored)
+```
+
+Re-run and commit the public PDF whenever the CV content changes.
+
 ## Motion
 
 Primitives live in `src/components/motion/` (smooth scroll, split-text reveal, fade-in, magnetic, cursor, marquee). Everything respects `prefers-reduced-motion`: no preloader, no smooth scroll, no custom cursor, content shown in its final state.
