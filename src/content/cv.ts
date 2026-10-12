@@ -38,7 +38,9 @@ export const cvRoles: CvRole[] = [
     period: "Aug 2025 – Present",
     bullets: [
       "Lead the engineering team building Mantiq Launch, an AI platform whose 21 tools take founders from an idea to a launched business, and AI tools for teachers.",
-      "Build product features and the services behind them in Next.js, TypeScript and Node.js.",
+      "Built AI employees: agents scoped to each organisation that work from its synced data and keep responses within the brand and setup it has configured.",
+      "Built Brand Studio and Market Research with the team as the inputs the marketing campaign, the product’s end result, is generated from.",
+      "Build product features and the backend services behind them in Next.js, TypeScript and Node.js.",
       "Migrated authentication to AWS Cognito and moved services onto AWS ECS.",
       "Run planning and code review, and work with the business on what to build next.",
     ],

@@ -6,7 +6,7 @@ export const experience: Role[] = [
     end: "Now",
     title: "Team lead",
     company: "Giv AI Labs",
-    line: "Leading the team building Mantiq Launch and AI tools for businesses and teachers.",
+    line: "Leading the team building Mantiq Launch: AI employees, Brand Studio, Market Research and campaigns, plus AI tools for teachers.",
   },
   {
     start: "2024",

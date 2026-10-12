@@ -38,7 +38,8 @@ export const projects: Project[] = [
     role: "Team lead",
     points: [
       "Lead the engineering team building the product, from planning through release",
-      "Build the product app: the AI tools founders use to validate, brand, build and run",
+      "Built AI employees: agents scoped to each organisation that work from its synced data and reply within the setup it has configured",
+      "Built Brand Studio and Market Research with the team: the inputs that the marketing campaign, the product’s end result, is generated from",
       "Moved authentication to AWS Cognito and services onto ECS",
       "Work with the business side on what to build next as the company grows",
     ],
@@ -53,11 +54,19 @@ export const projects: Project[] = [
     link: { label: "Visit mantiq-launch.com", href: "https://mantiq-launch.com/" },
     caseStudy: {
       overview:
-        "Mantiq Launch takes a founder from an idea to a live business. They describe the idea once; the product validates it against the market, builds the brand and puts a website behind it. I lead the engineering team and work hands-on in the product app and the backend that powers it. Alongside it, the team builds AI tools for teachers.",
+        "Mantiq Launch takes a founder from an idea to a live business. They describe the idea once; the product validates it against the market, builds the brand and puts a website behind it. I lead the engineering team and work hands-on in the product app and the backend behind it, from AI employees scoped to each organisation to the path from brand and research to a finished marketing campaign. Alongside it, the team builds AI tools for teachers.",
       sections: [
         {
           heading: "One brief behind 21 tools",
           body: "Every tool, from the validation report and brand studio to market research and the website builder, reads from the same business brief. Most of my product work happens here: building tools on top of that shared brief so a founder never has to explain their business twice.",
+        },
+        {
+          heading: "From brand and research to a campaign",
+          body: "Brand Studio captures how a business looks and speaks; Market Research finds its audience, channels and competitors. We built both as inputs, so the end product, a marketing campaign, is generated from the business’s own brand and research instead of a generic template.",
+        },
+        {
+          heading: "AI employees that know the business",
+          body: "I built AI employees: agents scoped to a single organisation. They work from that organisation’s synced data, its brief, brand and research, and keep their responses within what it has set up, so every answer reflects that business rather than a generic one.",
         },
         {
           heading: "Infrastructure that keeps up",
