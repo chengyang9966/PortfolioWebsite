@@ -12,6 +12,11 @@ import hotelx from "@/assets/work/hotelx.webp";
 import hotelxPoster from "@/assets/work/hotelx-poster.webp";
 import hotelxTypes from "@/assets/work/hotelx-types.webp";
 import identityLogin from "@/assets/work/identity-login.webp";
+import leadflowDetail from "@/assets/work/leadflow-lead-detail-whatsapp-tab.webp";
+import leadflowInbox from "@/assets/work/leadflow-whatsapp-inbox.webp";
+import leadflowPipeline from "@/assets/work/leadflow-pipeline-board.webp";
+import leadflowPoster from "@/assets/work/leadflow-poster.webp";
+import leadflowReports from "@/assets/work/leadflow-reports-dashboard.webp";
 import identityRegister from "@/assets/work/identity-register.webp";
 
 const signsbeatShots = {
@@ -67,6 +72,72 @@ export const projects: Project[] = [
         { src: mantiq, alt: "Mantiq Launch home page: Every tool it takes to launch a business, in one place." },
         { src: mantiqTools, alt: "Mantiq Launch toolkit: 21 tools grouped into Validate, Brand, Build and Run." },
         { src: mantiqDay, alt: "Mantiq Launch walks a founder through a single launch day, starting at 9:00 am." },
+      ],
+    },
+  },
+  {
+    slug: "leadflow",
+    title: "LeadFlow",
+    org: "TechDevX",
+    period: "2026 – now",
+    year: "2026",
+    summary:
+      "A CRM for small sales teams that captures leads from websites and WhatsApp, routes them to the right rep, and lets an AI agent answer enquiries around the clock.",
+    role: "Founder and engineer",
+    points: [
+      "Designed and built the product end to end, from data model to deploys",
+      "Built the WhatsApp AI agent: playbooks, a daily cost cap, and replies dropped if they fail validation",
+      "Made it multi-tenant, with every database query scoped to its business",
+      "Set up CI/CD: lint, types, API tests against a real Postgres, container builds and automated deploys",
+    ],
+    stack: [
+      "Next.js",
+      "Fastify",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "BullMQ",
+      "Claude API",
+      "WhatsApp Cloud API",
+    ],
+    media: {
+      kind: "video",
+      webm: "/work/leadflow.webm",
+      mp4: "/work/leadflow.mp4",
+      poster: leadflowPoster,
+      alt: "LeadFlow with demo data: the pipeline board, the WhatsApp inbox and a lead’s details.",
+    },
+    link: { label: "Visit leadflow.techdevx.com", href: "https://leadflow.techdevx.com" },
+    caseStudy: {
+      overview:
+        "LeadFlow is TechDevX’s own product: a CRM for small sales teams. Leads arrive from a website widget, an API or WhatsApp, and each one gets an owner, a stage and a full history. On WhatsApp, an AI agent answers enquiries day and night using the business’s own playbooks, and staff can take over a conversation at any time. Many businesses run on one install, each kept fully separate.",
+      sections: [
+        {
+          heading: "A pipeline people actually use",
+          body: "A drag-and-drop board and a sortable lead table, with filters saved in the URL and bulk stage moves. Each lead opens into a panel with an activity history that can’t be edited, notes, tasks, custom fields and its WhatsApp thread. Duplicate detection, CSV import and export, and reports on where leads come from are built in.",
+        },
+        {
+          heading: "An AI agent that knows when to stop",
+          body: "Incoming WhatsApp messages become leads and conversations. The agent replies using playbooks the business sets, within a daily spending cap, and any reply that fails validation is dropped rather than sent. A message from staff pauses the AI for that conversation. It runs on Claude by default, with OpenAI switchable.",
+        },
+        {
+          heading: "Leads from anywhere",
+          body: "Each business gets API keys and an embeddable widget for its own site, plus web-to-lead forms. The TechDevX studio site’s own contact form feeds straight into LeadFlow.",
+        },
+        {
+          heading: "Built to run",
+          body: "A Turborepo monorepo with Next.js apps, a Fastify API and background workers on Redis queues, all on Postgres with every query scoped to its business. Every push to main runs lint, type checks and API tests against a real Postgres, then builds containers and deploys them to DigitalOcean.",
+        },
+      ],
+      gallery: [
+        { src: leadflowInbox, alt: "LeadFlow WhatsApp inbox: an AI reply to a customer, with a Take over button." },
+        { src: leadflowPipeline, alt: "LeadFlow pipeline board with leads grouped by stage." },
+        { src: leadflowDetail, alt: "A lead’s detail panel open on its WhatsApp conversation." },
+        {
+          src: leadflowReports,
+          alt: "LeadFlow dashboard: pipeline value, win rate, leads per stage and conversion funnel.",
+        },
       ],
     },
   },

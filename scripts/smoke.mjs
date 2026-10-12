@@ -26,6 +26,7 @@ const mustNotContain = ["Lorem", "Create Next App"];
 
 const caseStudies = {
   "mantiq-launch": "Mantiq Launch",
+  leadflow: "LeadFlow",
   "techdevx-identity": "TechDevX Identity",
   signsbeat: "Signsbeat",
   hotelx: "HotelX",
