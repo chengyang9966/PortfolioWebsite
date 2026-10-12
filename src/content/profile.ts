@@ -7,8 +7,9 @@ export const profile = {
   timeZone: "Asia/Kuala_Lumpur",
   shippingSince: 2020,
   email: "chengyang9966@gmail.com",
+  site: "https://www.chengyangong.com",
   links: {
-    resume: "https://drive.google.com/file/d/1XokdcVSmscvgE-ilscMXLGu2wow4JIJf/view",
+    resume: "/ong-cheng-yang-cv.pdf",
     github: "https://github.com/chengyang9966",
     linkedin: "https://my.linkedin.com/in/chengyangong",
   },
