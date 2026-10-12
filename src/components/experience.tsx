@@ -23,7 +23,7 @@ export function Experience() {
                 className="absolute inset-x-[-1rem] inset-y-0 -z-10 origin-bottom scale-y-0 rounded-sm bg-raised transition-transform duration-500 ease-out-quint group-hover:scale-y-100 md:inset-x-[-1.5rem]"
               />
               <p className="text-[0.9375rem] text-fog tnum md:col-span-3">
-                {role.start} – {role.end === "Now" ? <span className="text-sodium">Now</span> : role.end}
+                {role.start} – {role.end === "Now" ? <span className="text-accent">Now</span> : role.end}
               </p>
               <div className="transition-transform duration-500 ease-out-quint group-hover:translate-x-2 md:col-span-4">
                 <h3 className="font-serif text-[1.85rem] leading-tight font-[380] tracking-[-0.015em]">

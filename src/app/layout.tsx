@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f1d21",
+  themeColor: "#1a1420",
 };
 
 // Runs before first paint: flags JS, and decides whether this visit gets the preloader.

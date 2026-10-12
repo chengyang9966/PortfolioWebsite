@@ -61,8 +61,8 @@ export function Hero() {
         <p data-intro className="text-fog">
           <span data-intro-fade className="flex items-center gap-2.5">
             <span aria-hidden className="relative flex size-2">
-              <span className="absolute inset-0 animate-ping rounded-full bg-sodium/60 [animation-duration:2.4s]" />
-              <span className="relative size-2 rounded-full bg-sodium" />
+              <span className="absolute inset-0 animate-ping rounded-full bg-accent/60 [animation-duration:2.4s]" />
+              <span className="relative size-2 rounded-full bg-accent" />
             </span>
             {profile.current.title} at {profile.current.company}, {profile.location.split(",")[0]}
           </span>
@@ -100,7 +100,7 @@ export function Hero() {
               products. Now I lead the team building{" "}
               <a
                 href="#work"
-                className="text-paper underline decoration-sodium decoration-1 underline-offset-4 hover:decoration-2"
+                className="text-paper underline decoration-accent decoration-1 underline-offset-4 hover:decoration-2"
               >
                 Mantiq Launch
               </a>
@@ -114,7 +114,7 @@ export function Hero() {
                 <Magnetic>
                   <a
                     href={`mailto:${profile.email}`}
-                    className="group block rounded-full bg-sodium px-5 py-2.5 font-medium text-harbour"
+                    className="group block rounded-full bg-accent px-5 py-2.5 font-medium text-ink"
                   >
                     <RollText>Email me</RollText>
                   </a>

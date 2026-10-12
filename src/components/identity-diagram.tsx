@@ -81,7 +81,10 @@ export function IdentityDiagram() {
   const active = new Set(identitySteps[step].edges);
 
   return (
-    <div ref={root} className="relative size-full bg-[radial-gradient(ellipse_at_50%_40%,#1a3138_0%,#132429_70%)]">
+    <div
+      ref={root}
+      className="relative size-full bg-[radial-gradient(ellipse_at_50%_40%,var(--color-raised)_0%,var(--color-ink)_70%)]"
+    >
       <svg
         viewBox="0 0 1600 1000"
         role="img"
@@ -96,15 +99,13 @@ export function IdentityDiagram() {
           width="540"
           height="520"
           rx="24"
-          fill="none"
-          stroke="#f5a524"
-          strokeOpacity="0.35"
           strokeDasharray="6 8"
+          className="fill-none stroke-accent/35"
         />
-        <text x="558" y="195" fill="#f5a524" fontSize="24">
+        <text x="558" y="195" fontSize="24" className="fill-accent">
           auth.techdevx.com
         </text>
-        <text x="1042" y="195" fill="#93a3a3" fontSize="20" textAnchor="end">
+        <text x="1042" y="195" fontSize="20" textAnchor="end" className="fill-fog">
           Caddy, TLS per org
         </text>
 
@@ -115,11 +116,9 @@ export function IdentityDiagram() {
               paths.current[id] = el;
             }}
             d={d}
-            fill="none"
-            stroke={active.has(id) ? "#f5a524" : "#2c454c"}
             strokeWidth={active.has(id) ? 3 : 2}
             strokeDasharray={active.has(id) ? "10 8" : undefined}
-            className={active.has(id) ? "diagram-flow" : undefined}
+            className={`fill-none ${active.has(id) ? "diagram-flow stroke-accent" : "stroke-fog/30"}`}
             style={{ transition: "stroke 400ms ease" }}
           />
         ))}
@@ -132,16 +131,14 @@ export function IdentityDiagram() {
               width={node.w}
               height={node.h}
               rx="18"
-              fill="#0f1d21"
-              stroke={node.id === "server" ? "#f5a524" : "#2c454c"}
-              strokeOpacity={node.id === "server" ? 0.8 : 1}
               strokeWidth="2"
               strokeDasharray={node.dashed ? "6 8" : undefined}
+              className={`fill-ink ${node.id === "server" ? "stroke-accent/80" : "stroke-fog/30"}`}
             />
-            <text x={node.x + 28} y={node.y + node.h / 2 - 6} fill="#ece6d9" fontSize="30">
+            <text x={node.x + 28} y={node.y + node.h / 2 - 6} fontSize="30" className="fill-paper">
               {node.title}
             </text>
-            <text x={node.x + 28} y={node.y + node.h / 2 + 30} fill="#93a3a3" fontSize="22">
+            <text x={node.x + 28} y={node.y + node.h / 2 + 30} fontSize="22" className="fill-fog">
               {node.sub}
             </text>
           </g>
@@ -154,15 +151,15 @@ export function IdentityDiagram() {
               packets.current[id] = el;
             }}
             r="9"
-            fill="#f5a524"
             opacity="0"
-            style={{ filter: "drop-shadow(0 0 8px rgb(245 165 36 / 0.8))" }}
+            className="fill-accent"
+            style={{ filter: "drop-shadow(0 0 8px color-mix(in srgb, var(--color-accent) 80%, transparent))" }}
           />
         ))}
       </svg>
 
       <div className="absolute inset-x-0 bottom-0 flex items-center gap-4 px-[4%] pb-[3.5%] text-[clamp(0.7rem,1.1vw,1rem)]">
-        <span className="shrink-0 text-sodium tnum">
+        <span className="shrink-0 text-accent tnum">
           {step + 1} / {identitySteps.length}
         </span>
         <p key={step} className="diagram-caption text-paper/90">

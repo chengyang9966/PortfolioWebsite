@@ -62,7 +62,7 @@ export function About() {
                     <span>
                       <span className="block text-paper/90">{item.title}</span>
                       <span className="block text-[0.9375rem] text-fog">{item.school}</span>
-                      {item.note && <span className="block text-[0.9375rem] text-sodium/90">{item.note}</span>}
+                      {item.note && <span className="block text-[0.9375rem] text-accent/90">{item.note}</span>}
                     </span>
                   </li>
                 ))}

@@ -33,7 +33,7 @@ export function ProjectMedia({ media, autoPlay = false, videoRef }: Props) {
 
   const [left, middle, right] = media.shots;
   return (
-    <div className="flex size-full items-center justify-center bg-[radial-gradient(ellipse_at_50%_115%,#24414a_0%,#152a30_62%)]">
+    <div className="flex size-full items-center justify-center bg-[radial-gradient(ellipse_at_50%_115%,var(--color-glow)_0%,var(--color-raised)_62%)]">
       <Phone shot={left} className="-mr-[5%] h-[66%] translate-y-[5%] -rotate-[7deg]" />
       <Phone shot={middle} className="relative z-10 h-[78%]" />
       <Phone shot={right} className="-ml-[5%] h-[66%] translate-y-[5%] rotate-[7deg]" />

@@ -106,7 +106,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                     data-reveal
                     className="grid grid-cols-[3rem_1fr] border-t border-line py-5 text-lg text-paper/90 last:border-b md:text-xl"
                   >
-                    <span className="text-sm text-sodium tnum">{pad(i + 1)}</span>
+                    <span className="text-sm text-accent tnum">{pad(i + 1)}</span>
                     {step.text}
                   </li>
                 ))}
@@ -155,7 +155,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
               href={project.link.href}
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex items-center gap-1.5 border-b border-sodium/60 pb-0.5 text-lg transition-colors hover:border-sodium hover:text-sodium"
+              className="group inline-flex items-center gap-1.5 border-b border-accent/60 pb-0.5 text-lg transition-colors hover:border-accent hover:text-accent"
             >
               <RollText>{project.link.label}</RollText>
               <ArrowUpRight className="size-4" />

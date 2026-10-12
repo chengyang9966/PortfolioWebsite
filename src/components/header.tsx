@@ -39,7 +39,7 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color] duration-500 ease-out-quint ${
         hidden ? "-translate-y-full" : "translate-y-0"
-      } ${scrolled ? "border-b border-line/70 bg-harbour/80 backdrop-blur-md" : "border-b border-transparent"}`}
+      } ${scrolled ? "border-b border-line/70 bg-ink/80 backdrop-blur-md" : "border-b border-transparent"}`}
     >
       <nav
         aria-label="Main"
@@ -65,10 +65,7 @@ export function Header() {
             ))}
           </ul>
           <Magnetic>
-            <Link
-              href={href("contact")}
-              className="group block rounded-full bg-sodium px-4 py-2 font-medium text-harbour"
-            >
+            <Link href={href("contact")} className="group block rounded-full bg-accent px-4 py-2 font-medium text-ink">
               <RollText>Contact</RollText>
             </Link>
           </Magnetic>

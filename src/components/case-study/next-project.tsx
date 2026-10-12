@@ -16,7 +16,7 @@ export function NextProject({ project }: { project: Project }) {
           <span className="transition-transform duration-700 ease-out-quint group-hover:translate-x-4">
             {project.title}
           </span>
-          <ArrowUpRight className="mb-[0.12em] size-[0.45em] shrink-0 text-sodium transition-transform duration-700 ease-out-quint group-hover:rotate-45" />
+          <ArrowUpRight className="mb-[0.12em] size-[0.45em] shrink-0 text-accent transition-transform duration-700 ease-out-quint group-hover:rotate-45" />
         </p>
         <p className="mt-4 text-fog">
           {project.role}, {project.org}

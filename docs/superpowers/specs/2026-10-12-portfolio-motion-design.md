@@ -12,6 +12,10 @@
 - Mantiq copy: Cheng Yang works on the product app (the 21 tools), backend/infrastructure, and leads the team — not the marketing site.
 - Drop the HotelX staff-login screenshot. Add a credit line: product names and imagery belong to their companies.
 
+## Palette (updated)
+
+Switched from harbour teal + sodium amber to **aubergine + champagne**, chosen from a side-by-side render of four options. Tokens were renamed to roles: `ink` `#1a1420`, `raised` `#251c2c`, `line` `#3a2f44`, `glow` `#3a2c45`, `paper` `#efe8e1`, `fog` `#aa9fae`, `accent` `#e6b874`. Components use only these tokens (the identity diagram included); the only literal hex values left are in `icon.svg` and the `themeColor` meta.
+
 ## Libraries
 
 - `lenis` — smooth scroll, driven by the GSAP ticker.

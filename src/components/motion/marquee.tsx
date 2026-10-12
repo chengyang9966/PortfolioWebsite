@@ -38,7 +38,7 @@ export function Marquee({ items }: { items: string[] }) {
     items.map((item) => (
       <span key={`${copy}-${item}`} aria-hidden={copy > 0} className="flex items-center">
         <span className="px-[0.35em]">{item}</span>
-        <svg viewBox="0 0 10 10" aria-hidden className="size-[0.22em] shrink-0 fill-sodium">
+        <svg viewBox="0 0 10 10" aria-hidden className="size-[0.22em] shrink-0 fill-accent">
           <path d="M5 0 10 5 5 10 0 5Z" />
         </svg>
       </span>

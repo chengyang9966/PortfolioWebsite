@@ -20,7 +20,7 @@ export default function Home() {
     <PageTransition>
       <a
         href="#work"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded focus:bg-sodium focus:px-3 focus:py-2 focus:text-harbour"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-ink"
       >
         Skip to work
       </a>
@@ -49,7 +49,7 @@ export default function Home() {
                   <div key={project.title} data-reveal className="max-w-[34rem]">
                     {project.metric && (
                       <p className="mb-4 flex items-baseline gap-3 border-b border-line pb-4">
-                        <span className="font-serif text-[clamp(2.75rem,5vw,4rem)] leading-none font-[340] tracking-[-0.03em] text-sodium">
+                        <span className="font-serif text-[clamp(2.75rem,5vw,4rem)] leading-none font-[340] tracking-[-0.03em] text-accent">
                           {project.metric.value}
                         </span>
                         <span className="text-fog">{project.metric.label}</span>
@@ -71,7 +71,7 @@ export default function Home() {
                         href={project.link.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="group mt-4 inline-flex items-center gap-1 border-b border-sodium/60 pb-0.5 text-paper transition-colors hover:border-sodium hover:text-sodium"
+                        className="group mt-4 inline-flex items-center gap-1 border-b border-accent/60 pb-0.5 text-paper transition-colors hover:border-accent hover:text-accent"
                       >
                         <RollText>{project.link.label}</RollText>
                         <ArrowUpRight className="size-3.5" />

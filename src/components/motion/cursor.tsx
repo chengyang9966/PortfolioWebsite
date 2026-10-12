@@ -8,7 +8,7 @@ type Mode = "dot" | "link" | "label";
 const modeClass: Record<Mode, string> = {
   dot: "size-2.5 bg-paper mix-blend-difference",
   link: "size-11 border border-paper/60 bg-transparent",
-  label: "size-24 bg-sodium text-harbour",
+  label: "size-24 bg-accent text-ink",
 };
 
 /**

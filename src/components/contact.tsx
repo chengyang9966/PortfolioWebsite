@@ -72,7 +72,7 @@ export function Contact() {
               <a
                 href={`mailto:${profile.email}`}
                 data-cursor="Write"
-                className="mt-6 inline-block border-b-2 border-sodium pb-1 font-serif text-[clamp(1.5rem,3.2vw,2.75rem)] break-all transition-colors hover:text-sodium"
+                className="mt-6 inline-block border-b-2 border-accent pb-1 font-serif text-[clamp(1.5rem,3.2vw,2.75rem)] break-all transition-colors hover:text-accent"
               >
                 {profile.email}
               </a>

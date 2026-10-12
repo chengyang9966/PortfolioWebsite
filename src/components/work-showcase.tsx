@@ -125,7 +125,7 @@ export function WorkShowcase() {
                 ({pad(active + 1)} / {pad(projects.length)})
               </span>
               <span className="relative h-px flex-1 bg-line">
-                <span data-work-progress className="absolute inset-0 origin-left bg-sodium" />
+                <span data-work-progress className="absolute inset-0 origin-left bg-accent" />
               </span>
               <span className="text-paper">{projects[active].title}</span>
             </div>
