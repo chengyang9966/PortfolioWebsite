@@ -17,6 +17,7 @@ const mustContain = [
   "IFCA",
   "FirebiredIt",
   "TechDevX",
+  "PeopleX",
   "chengyang9966@gmail.com",
   "linkedin.com/in/chengyangong",
   "github.com/chengyang9966",

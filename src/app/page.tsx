@@ -2,9 +2,11 @@ import { About } from "@/components/about";
 import { Contact } from "@/components/contact";
 import { Experience } from "@/components/experience";
 import { Hero } from "@/components/hero";
+import { ArrowUpRight } from "@/components/icons";
 import { FadeIn } from "@/components/motion/fade-in";
 import { Marquee } from "@/components/motion/marquee";
 import { PageTransition } from "@/components/page-transition";
+import { RollText } from "@/components/roll-text";
 import { SectionHeading } from "@/components/section-heading";
 import { WorkShowcase } from "@/components/work-showcase";
 import { smallProjects } from "@/content/projects";
@@ -64,6 +66,17 @@ export default function Home() {
                     </p>
                     <p className="mt-3 text-paper/85">{project.summary}</p>
                     <p className="mt-3 text-[0.9375rem] text-fog">Built with {list.format(project.stack)}.</p>
+                    {project.link && (
+                      <a
+                        href={project.link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group mt-4 inline-flex items-center gap-1 border-b border-sodium/60 pb-0.5 text-paper transition-colors hover:border-sodium hover:text-sodium"
+                      >
+                        <RollText>{project.link.label}</RollText>
+                        <ArrowUpRight className="size-3.5" />
+                      </a>
+                    )}
                   </div>
                 ))}
               </div>

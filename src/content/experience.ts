@@ -40,8 +40,8 @@ export const experience: Role[] = [
     start: "May 2021",
     end: "Dec 2021",
     title: "Software engineer",
-    company: "Syntrino Solution",
-    line: "Built a virtual business card product, a UI refresh and new email templates with React, Next.js and .NET Core.",
+    company: "Syntrino Solutions",
+    line: "Worked on PeopleX, its HR platform: a virtual business card, the Thrive web app redesign and new email templates, with React, Next.js and .NET Core.",
   },
   {
     start: "Sep 2020",

@@ -233,6 +233,15 @@ export const smallProjects: SmallProject[] = [
     metric: { value: "3.2×", label: "inbound leads a month" },
   },
   {
+    title: "PeopleX Thrive",
+    org: "Syntrino Solutions",
+    period: "2021",
+    summary:
+      "PeopleX is an HR platform for leave, claims, payslips and attendance, used by companies across Southeast Asia. I built its virtual business card, worked on the UI redesign of the Thrive web app, and rebuilt the layouts of its system emails.",
+    stack: ["React", "Next.js", ".NET Core"],
+    link: { label: "Visit peoplex.ai", href: "https://www.peoplex.ai/hr-tech/" },
+  },
+  {
     title: "Loan application system",
     org: "Arkmind",
     period: "2022 – 2023",

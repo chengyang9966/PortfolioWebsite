@@ -37,6 +37,7 @@ export type SmallProject = {
   summary: string;
   stack: string[];
   metric?: { value: string; label: string };
+  link?: Link;
 };
 
 export type Role = {
